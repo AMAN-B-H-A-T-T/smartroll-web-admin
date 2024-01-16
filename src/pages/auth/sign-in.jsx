@@ -11,7 +11,7 @@ import loginSvg from "../../../public/img/loginillu.svg"
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import base_url from "@/base_url";
+import {base_url} from "@/base_url";
 import { useSelector , useDispatch } from "react-redux";
 import { set_Token , reset_token } from "@/action";
 import { useNavigate } from "react-router-dom";
@@ -19,12 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 export function SignIn() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const style = {
-    backgroundImage: `url(${loginSvg})`,
-    height:"100vh",
-    width:"100%",
-  };
+  const navigate = useNavigate()  
   
   const { register, handleSubmit} = useForm();
 
@@ -63,19 +58,18 @@ export function SignIn() {
 
   return (
     <>
-    <div class="absolute inset-0 opacity-50 bg-center bg-no-repeat scale-150" style={style}>
-      
-    </div>
-    <div class="relative bg-center">
-    <section className="flex z-10 justify-center bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100" style={{height:"100vh"}}>
-      <div className="w-full lg:w-3/5 mt-24">
+    <div className="h-screen bg-center bg-no-repeat sm:p-10 p-5" style={{background:'black'}}>
+    <section className="w-full h-full flex justify-center items-center rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100" style={{backgroundImage:'url(/img/background2.jpg)'}}>
+    {/* <div className="sm:w-full h-full lg:block hidden" style={{maxHeight:'100vh',overflow:'hidden',backgroundImage:'url(/img/background2.jpg)'}}>      
+    </div> */}
+      <div className="text-white sm:w-full">
         <div className="text-center">
           <Typography variant="h2" className="font-bold mb-4">Sign In</Typography>
-          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to Sign In.</Typography>
+          <Typography variant="paragraph" className="text-lg font-normal">Enter your email and password to Sign In.</Typography>
         </div>
         <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+            <Typography variant="small"  className="font-medium">
               Your email
             </Typography>
             <Input
@@ -88,7 +82,7 @@ export function SignIn() {
               
               }}
             />
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+            <Typography variant="small" className="-mb-3 font-medium">
               Password
             </Typography>
             <Input
@@ -105,14 +99,10 @@ export function SignIn() {
           <Button type="submit" className="mt-6" style={{"backgroundColor":"	#ffa31a",color:"#000000"}} fullWidth>
             Sign In
           </Button>          
-          
         </form>
-
       </div>
-
-    </section>
+    </section>    
     </div>
-    
     </>
   );
 }
