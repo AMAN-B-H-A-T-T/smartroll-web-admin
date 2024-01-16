@@ -1,5 +1,8 @@
 const initialState = {
-    Token : ""
+    Token : {
+        "accessToken" : localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : null,
+        "refreshToken" : localStorage.getItem("refreshToken") ? localStorage.getItem("refreshToken") : null
+    } 
 }
 const userTokenAccess = (state = initialState,action)=>{
     switch(action.type){

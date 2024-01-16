@@ -41,7 +41,11 @@ export function SignIn() {
       }
       axios.post(`${base_url}/auth/api/login/`,body,{headers:header})
       .then((response)=>{
-        dispatch(set_Token(response.data))
+        const token_data = {
+          "accessToken" : response.data.access,
+          "refreshToken": response.data.refresh
+        }
+        dispatch(set_Token(token_data))
         localStorage.setItem('accessToken',response.data.access)
         localStorage.setItem('refreshToken',response.data.refresh)
         navigate("/")
