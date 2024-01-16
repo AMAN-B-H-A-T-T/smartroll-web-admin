@@ -9,8 +9,20 @@ import {
 } from "@/widgets/layout";
 import routes from "@/routes";
 import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function Dashboard() {
+  const navigate = useNavigate()
+  const access = localStorage.getItem('accessToken')
+  console.log(access)
+  useEffect(() => {
+    if(!access){
+      navigate("/auth/sign-in")      
+  }
+  }, [])
+  
+  
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } = controller;
 
